@@ -2,11 +2,11 @@ from vpython import *
 import time
 
 #room with a marble
-roof = box(pos=vector(0,-5,0), color=color.white, length=10, width=10, height=.1)
-ground = box(pos=vector(0,5,0), color=color.green, length=10, width=10, height=.1)
-left = box(pos=vector(-5,0,0), color=color.yellow, length=.1, width=10, height=10)
-right = box(pos=vector(5,0,0), color=color.red, length=.1, width=10, height=10)
-behind = box(pos=vector(0,0,-5), color=color.magenta, length=10, width=.1, height=10)
+ground = box(pos=vector(0,-5,0), color=color.white, size=vector(10, .1, 10))
+roof = box(pos=vector(0,5,0), color=color.green, size=vector(10, .1, 10))
+left = box(pos=vector(-5,0,0), color=color.yellow, size=vector(.1, 10, 10))
+right = box(pos=vector(5,0,0), color=color.red, size=vector(.1, 10, 10))
+behind = box(pos=vector(0,0,-5), color=color.magenta, size=vector(10, 10, .1))
 marble = sphere(pos=vector(0,0,0), color=color.blue, radius=1)
 
 deltaX = .1
