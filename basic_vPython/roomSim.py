@@ -1,3 +1,14 @@
+#   vPython Orientation:
+#     y
+#     |
+#     |  laptop
+#     |  screen
+#     |_ _ _ _ _ x 
+#    /
+#   / 
+#  /  
+# z (out of the screen)
+
 from vpython import *
 import time
 
