@@ -15,7 +15,7 @@ import random
 
 xlen = 10
 ylen = 10
-zlen = 30
+zlen = 10
 thickness = .1
 
 walls = [((xlen, thickness, zlen), (0, -ylen/2, 0), (0, ylen/2, 0)), ((thickness, ylen, zlen), (-xlen/2, 0, 0), (xlen/2, 0, 0)), ((xlen, ylen, thickness), (0,0,-zlen/2), (0,0,zlen/2))]
@@ -46,14 +46,17 @@ xPos = random.uniform(-thresholdx, thresholdx)
 yPos = random.uniform(-thresholdy, thresholdy)
 zPos = random.uniform(-thresholdz, thresholdz)
 
+# e = random.uniform(0, 1) # coefficient of restitution (for releastic physics)
+e = 1 # perfect elastic collision
+
 while True:
     rate(60)
     xPos += deltaX
     yPos += deltaY
     zPos += deltaZ
     
-    if abs(xPos) >=  xlen/2 - thickness/2 - mRadius: deltaX *= -1
-    if abs(yPos) >=  ylen/2 - thickness/2 - mRadius: deltaY *= -1
-    if abs(zPos) >=  zlen/2 - thickness/2 - mRadius: deltaZ *= -1
+    if abs(xPos) >=  xlen/2 - thickness/2 - mRadius: deltaX *= -e
+    if abs(yPos) >=  ylen/2 - thickness/2 - mRadius: deltaY *= -e
+    if abs(zPos) >=  zlen/2 - thickness/2 - mRadius: deltaZ *= -e
 
     marble.pos = vector(xPos,yPos,zPos)
