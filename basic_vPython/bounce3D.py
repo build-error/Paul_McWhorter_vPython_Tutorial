@@ -15,7 +15,7 @@ import random
 
 xlen = 10
 ylen = 10
-zlen = 10
+zlen = 30
 thickness = .1
 
 walls = [((xlen, thickness, zlen), (0, -ylen/2, 0), (0, ylen/2, 0)), ((thickness, ylen, zlen), (-xlen/2, 0, 0), (xlen/2, 0, 0)), ((xlen, ylen, thickness), (0,0,-zlen/2), (0,0,zlen/2))]
@@ -30,19 +30,30 @@ for i in [0,1,2]:
 
         boxTemp = box(size=vector(walls[i][0][0],walls[i][0][1],walls[i][0][2]), pos=vector(walls[i][j][0], walls[i][j][1], walls[i][j][2]), color=vector(random.randrange(0, 10)/10, random.randrange(0, 10)/10, random.randrange(0, 10)/10))
 
-# while True:
-#     pass
+mRadius = 1
 
-ballRadius = 1
-
-marble = sphere(pos=vector(0,0,0), color=color.blue, radius=ballRadius)
+marble = sphere(pos=vector(0,0,0), color=color.blue, radius=mRadius)
 
 deltaX = .1
-xPos = 0
+deltaY = .1
+deltaZ = .1
+
+thresholdx = xlen/2 - thickness/2 - mRadius
+thresholdy = ylen/2 - thickness/2 - mRadius
+thresholdz = zlen/2 - thickness/2 - mRadius
+
+xPos = random.uniform(-thresholdx, thresholdx)
+yPos = random.uniform(-thresholdy, thresholdy)
+zPos = random.uniform(-thresholdz, thresholdz)
 
 while True:
     rate(60)
     xPos += deltaX
-    if abs(xPos) >=  xlen/2 - thickness/2 - ballRadius:
-        deltaX *= -1
-    marble.pos = vector(xPos,0,0)
+    yPos += deltaY
+    zPos += deltaZ
+    
+    if abs(xPos) >=  xlen/2 - thickness/2 - mRadius: deltaX *= -1
+    if abs(yPos) >=  ylen/2 - thickness/2 - mRadius: deltaY *= -1
+    if abs(zPos) >=  zlen/2 - thickness/2 - mRadius: deltaZ *= -1
+
+    marble.pos = vector(xPos,yPos,zPos)
