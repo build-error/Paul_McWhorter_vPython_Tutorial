@@ -13,9 +13,6 @@ from vpython import *
 import time
 import random
 
-piston1 = cylinder(radius=1, length=0, color=color.red, opacity=1)
-delta = 0.01
-
 def animateLength(shape, delta, r, lower, upper, dir):
     if dir == 'up':
         while shape.length <= upper:
@@ -49,12 +46,16 @@ def animateRadius(shape, delta, r, lower, upper, dir):
             rate(r)
             shape.radius -= delta
 
-while True:
-    animateLength(piston1, delta, 60, 0, 2, 'up')
-    animateOpacity(piston1, delta, 60, 0, 1, 'down')
-    animateOpacity(piston1, delta, 60, 0, 1, 'up')
-    animateLength(piston1, delta, 60, 0, 2, 'down')
-    animateLength(piston1, delta, 60, 0, 2, 'up')
-    animateRadius(piston1, delta, 60, 0, 1, 'down')
-    animateRadius(piston1, delta, 60, 0, 1, 'up')
-    animateLength(piston1, delta, 60, 0, 2, 'down')
+if __name__ == '__main__':
+    piston1 = cylinder(radius=1, length=0, color=color.red, opacity=1)
+    delta = 0.01
+    
+    while True:
+        animateLength(piston1, delta, 60, 0, 2, 'up')
+        animateOpacity(piston1, delta, 60, 0, 1, 'down')
+        animateOpacity(piston1, delta, 60, 0, 1, 'up')
+        animateLength(piston1, delta, 60, 0, 2, 'down')
+        animateLength(piston1, delta, 60, 0, 2, 'up')
+        animateRadius(piston1, delta, 60, 0, 1, 'down')
+        animateRadius(piston1, delta, 60, 0, 1, 'up')
+        animateLength(piston1, delta, 60, 0, 2, 'down')
